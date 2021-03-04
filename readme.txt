@@ -22,12 +22,6 @@ pm uninstall -k --user 0 com.miui.voiceassist
 pm uninstall -k --user 0 com.android.email
 pm uninstall -k --user 0 com.miui.huanji
 pm uninstall -k --user 0 com.miui.virtualsim
-pm uninstall -k --user 0 
-pm uninstall -k --user 0 
-pm uninstall -k --user 0 
-pm uninstall -k --user 0 
-pm uninstall -k --user 0 
-pm uninstall -k --user 0 
-pm uninstall -k --user 0 
-pm uninstall -k --user 0 
-pm uninstall -k --user 0 
+pm uninstall -k --user 0 com.mi.health
+pm uninstall -k --user 0 com.android.browser
+
