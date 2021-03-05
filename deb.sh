@@ -1,3 +1,4 @@
+adb shell
 echo " Clean your phone "
 pm uninstall -k --user 0 com.zhihu.android
 pm uninstall -k --user 0 com.xiaomi.jr 
