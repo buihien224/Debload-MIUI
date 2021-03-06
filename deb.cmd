@@ -20,4 +20,5 @@ adb shell pm uninstall -k --user 0 com.miui.virtualsim
 adb shell pm uninstall -k --user 0 com.mi.health
 adb shell pm uninstall -k --user 0 com.android.browser
 adb shell pm uninstall -k --user 0 com.sohu.inputmethod.sogou.xiaomi
+adb shell pm uninstall -k --user 0 com.iflytek.inputmethod.miui
 echo "done"
