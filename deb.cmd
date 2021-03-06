@@ -19,4 +19,5 @@ adb shell pm uninstall -k --user 0 com.miui.huanji
 adb shell pm uninstall -k --user 0 com.miui.virtualsim
 adb shell pm uninstall -k --user 0 com.mi.health
 adb shell pm uninstall -k --user 0 com.android.browser
+adb shell pm uninstall -k --user 0 com.sohu.inputmethod.sogou.xiaomi
 echo "done"
