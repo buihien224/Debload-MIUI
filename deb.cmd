@@ -21,4 +21,13 @@ adb shell pm uninstall -k --user 0 com.mi.health
 adb shell pm uninstall -k --user 0 com.android.browser
 adb shell pm uninstall -k --user 0 com.iflytek.inputmethod.miui
 adb shell pm uninstall -k --user 0 com.baidu.input_mi
+adb shell pm uninstall --user 0 com.amazon.mShop.android.shopping
+adb shell pm uninstall --user 0 com.amazon.clouddrive.photos
+adb shell pm uninstall --user 0 com.amazon.avod.thirdpartyclient
+adb shell pm uninstall --user 0 com.amazon.kindle
+adb shell pm uninstall --user 0 com.kobobooks.android
+adb shell pm uninstall --user 0 com.s.antivirus
+adb shell pm uninstall --user 0 com.google.android.music
+adb shell pm uninstall --user 0 com.google.android.videos
+adb shell pm uninstall --user 0 com.google.android.mail
 echo "done"
