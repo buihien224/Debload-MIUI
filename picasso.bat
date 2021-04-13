@@ -5,7 +5,7 @@ adb.exe wait-for-device >NUL 2>NUL
 adb.exe devices -l 
 echo 1.Clean 
 echo 2.Install
-CHOICE /C 123 /M "Enter your choice:"
+CHOICE /C 12 /M "Enter your choice:"
 :: Note - list ERRORLEVELS in decreasing order
 IF ERRORLEVEL 1 GOTO Clean
 IF ERRORLEVEL 2 GOTO Install
