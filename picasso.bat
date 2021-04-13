@@ -11,8 +11,10 @@ IF ERRORLEVEL 2 GOTO Clean
 IF ERRORLEVEL 1 GOTO Install
 :: Install rom 
 :Install
-echo "Go to Recovery"
+echo "Auto enter to recovery"
+adb.exe reboot recovery
 adb.exe wait-for-device >NUL 2>NUL
+
 adb.exe devices
 timeout 5
 echo "Go to MENU (3 lines option)"
