@@ -3,30 +3,31 @@ CLS
 cd %cd%/adb
 adb.exe wait-for-device >NUL 2>NUL
 adb.exe devices -l 
-echo 1.Clean 
-echo 2.Install
+echo 1.Install 
+echo 2.Clean
 CHOICE /C 12 /M "Enter your choice:"
 :: Note - list ERRORLEVELS in decreasing order
-IF ERRORLEVEL 1 GOTO Clean
-IF ERRORLEVEL 2 GOTO Install
+IF ERRORLEVEL 2 GOTO Clean
+IF ERRORLEVEL 1 GOTO Install
 :: Install rom 
 :Install
 echo "Go to Recovery"
 adb.exe wait-for-device >NUL 2>NUL
 adb.exe devices
-timeout 15
+timeout 5
 echo "Go to MENU (3 lines option)"
-timeout 5
+timeout 3
 echo "Go To ADB & Sideload"
-timeout 5
+timeout 3
 echo "Swipe to Start Sideload"
-timeout 10
+timeout 5
 adb.exe devices
 timeout 2
 set /p UserInputPath=Drag your Zip file ROM, Magisk To CMD
 adb.exe sideload %UserInputPath%
 echo DONE
 GOTO End
+
 :Clean
 echo " This script help you clean so many fucking miui trash app"
 echo " feel free to contact me via telegram 035939562"
@@ -67,4 +68,5 @@ echo " pls allow to install in your phone"
 echo "Fuck xiaomi's trash app "
 echo "If you want add more app to delete"
 GOTO End
-pause
+
+End 
