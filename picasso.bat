@@ -14,6 +14,8 @@ IF ERRORLEVEL 1 GOTO Install
 :Install
 echo Auto enter to recovery
 adb.exe reboot recovery
+adb.exe wait-for-sideload 
+adb.exe devices
 timeout 60
 adb.exe devices
 echo Go to MENU (3 lines option)
