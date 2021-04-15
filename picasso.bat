@@ -4,12 +4,14 @@ cd %cd%/adb
 echo wait-for-device.....
 adb.exe wait-for-device
 adb.exe devices -l 
-echo 1.Install 
-echo 2.Clean
-CHOICE /C 12 /M "Enter your choice:"
-:: Note - list ERRORLEVELS in decreasing order
-IF ERRORLEVEL 2 GOTO Clean
-IF ERRORLEVEL 1 GOTO Install
+ECHO 1. Install
+ECHO 2. Clean
+set choice=
+set /p choice=Type the number to do.
+if not '%choice%'=='' set choice=%choice:~0,1%
+if '%choice%'=='1' goto Install
+if '%choice%'=='2' goto Clean
+ECHO "%choice%" is not valid, try again
 :: Install rom 
 :Install
 CLS
@@ -55,6 +57,8 @@ echo #                            '--'   '--'                      #
 echo ###############################################################   
 adb.exe reboot
 GOTO End
+
+
 :Clean
 CLS
 echo  ________  ___       _______   ________  ________      
@@ -115,5 +119,7 @@ echo #                            |  |   |  |                      #
 echo #                            '--'   '--'                      #        
 echo ###############################################################   
 GOTO End
-pause
+
+
+
 End 
