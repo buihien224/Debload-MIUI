@@ -14,22 +14,44 @@ IF ERRORLEVEL 1 GOTO Install
 :Install
 echo Auto enter to recovery
 adb.exe reboot recovery
-adb.exe wait-for-sideload 
-adb.exe devices
-timeout 60
-adb.exe devices
-echo Go to MENU (3 lines option)
-timeout 5
-echo Go To ADB & Sideload
-timeout 5
-echo Swipe to Start Sideload
-timeout 5
-adb.exe devices
+adb.exe wait-for-recovery
+CLS
+echo ##################################
+echo #		Now in recovery mode      #
+echo #   Go to MENU (3 lines option)  #
+echo #     Go To ADB & Sideload       #
+echo #    Swipe to Start Sideload     #
+echo ##################################
 set /p UserInputPath=Drag your Zip file ROM, Magisk To CMD : 
 adb.exe sideload %UserInputPath%
-echo DONE
+echo ##################################################################
+echo #		______ _       ___   _____ _   _ _____ _   _ _____        #
+echo #		|  ___| |     / _ \ /  ___| | | |_   _| \ | |  __ \		  #
+echo #		| |_  | |    / /_\ \\ `--.| |_| | | | |  \| | |  \/       #
+echo #		|  _| | |    |  _  | `--. \  _  | | | | . ` | | __        #
+echo #		| |   | |____| | | |/\__/ / | | |_| |_| |\  | |_\ \       #
+echo #		\_|   \_____/\_| |_/\____/\_| |_/\___/\_| \_/\____/       #
+echo # 																  #
+echo ##################################################################                                                                                                  
+adb.exe wait-for-recovery 
+CLS
+echo ###############################################################
+echo #                 .-'''-.                                     #          
+echo #_______         '   _    \                                   #        
+echo #\  ___ `'.    /   /` '.   \    _..._         __.....__       #        
+echo # ' |--.\  \  .   |     \  '  .'     '.   .-''         '.     #        
+echo # | |    \  ' |   '      |  '.   .-.   . /     .-''"'-.  `.   #        
+echo # | |     |  '\    \     / / |  '   '  |/     /________\   \  #        
+echo # | |     |  | `.   ` ..' /  |  |   |  ||                  |  #        
+echo # | |     ' .'    '-...-'`   |  |   |  |\    .-------------'  #        
+echo # | |___.' /'                |  |   |  | \    '-.____...---.  #        
+echo #/_______.'/                 |  |   |  |  `.             .'   #        
+echo #\_______|/                  |  |   |  |    `''-...... -'     #        
+echo #                            |  |   |  |                      #        
+echo #                            '--'   '--'                      #        
+echo ###############################################################   
+adb.exe reboot
 GOTO End
-
 :Clean
 echo  This script help you clean so many fucking miui trash app
 echo  feel free to contact me via telegram 035939562
