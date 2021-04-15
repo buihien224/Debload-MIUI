@@ -15,6 +15,7 @@ IF ERRORLEVEL 1 GOTO Install
 :: Install rom 
 :Install
 echo Auto enter to recovery
+adb.exe reboot recovery
 adb.exe wait-for-recovery
 CLS
 echo ##################################
