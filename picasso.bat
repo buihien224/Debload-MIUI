@@ -1,19 +1,25 @@
-@echo off
-CLS
+echo off
+cd %cd%/adb
+:begin
 cd %cd%/adb
 echo wait-for-device.....
 adb.exe wait-for-device
 adb.exe devices -l 
-ECHO 1. Install
-ECHO 2. Clean
-set choice=
-set /p choice=Type the number to do.
-if not '%choice%'=='' set choice=%choice:~0,1%
-if '%choice%'=='1' goto Install
-if '%choice%'=='2' goto Clean
-ECHO "%choice%" is not valid, try again
-:: Install rom 
-:Install
+echo Select a task:
+echo =============
+echo -
+echo 1) INSTALL
+echo 2) CLEAN
+echo -
+set /p op=Type option:
+if "%op%"=="1" goto op1
+if "%op%"=="2" goto op2
+
+echo Please Pick an option:
+goto begin
+
+
+:op1
 CLS
 echo Auto enter to recovery
 adb.exe reboot recovery
@@ -28,48 +34,17 @@ echo #    Swipe to Start Sideload     #
 echo ##################################
 adb.exe wait-for-sideload
 set /p UserInputPath=Drag your Zip file ROM, Magisk To CMD : 
-echo ##################################################################
-echo #		______ _       ___   _____ _   _ _____ _   _ _____        #
-echo #		|  ___| |     / _ \ /  ___| | | |_   _| \ | |  __ \		  #
-echo #		| |_  | |    / /_\ \\ `--.| |_| | | | |  \| | |  \/       #
-echo #		|  _| | |    |  _  | `--. \  _  | | | | . ` | | __        #
-echo #		| |   | |____| | | |/\__/ / | | |_| |_| |\  | |_\ \       #
-echo #		\_|   \_____/\_| |_/\____/\_| |_/\___/\_| \_/\____/       #
-echo # 																  #
-echo ##################################################################                                                                                                  
+echo FLASING                                                                                                 
 adb.exe sideload %UserInputPath%
 adb.exe wait-for-recovery 
 CLS
-echo ###############################################################
-echo #                 .-'''-.                                     #          
-echo #_______         '   _    \                                   #        
-echo #\  ___ `'.    /   /` '.   \    _..._         __.....__       #        
-echo # ' |--.\  \  .   |     \  '  .'     '.   .-''         '.     #        
-echo # | |    \  ' |   '      |  '.   .-.   . /     .-''"'-.  `.   #        
-echo # | |     |  '\    \     / / |  '   '  |/     /________\   \  #        
-echo # | |     |  | `.   ` ..' /  |  |   |  ||                  |  #        
-echo # | |     ' .'    '-...-'`   |  |   |  |\    .-------------'  #        
-echo # | |___.' /'                |  |   |  | \    '-.____...---.  #        
-echo #/_______.'/                 |  |   |  |  `.             .'   #        
-echo #\_______|/                  |  |   |  |    `''-...... -'     #        
-echo #                            |  |   |  |                      #        
-echo #                            '--'   '--'                      #        
-echo ###############################################################   
+echo DONE  
 adb.exe reboot
-GOTO End
+goto begin
 
-
-:Clean
+:op2
 CLS
-echo  ________  ___       _______   ________  ________      
-echo |\   ____\|\  \     |\  ___ \ |\   __  \|\   ___  \    
-echo \ \  \___|\ \  \    \ \   __/|\ \  \|\  \ \  \\ \  \   
-echo  \ \  \    \ \  \    \ \  \_|/_\ \   __  \ \  \\ \  \  
-echo   \ \  \____\ \  \____\ \  \_|\ \ \  \ \  \ \  \\ \  \ 
-echo    \ \_______\ \_______\ \_______\ \__\ \__\ \__\\ \__\
-echo     \|_______|\|_______|\|_______|\|__|\|__|\|__| \|__|
-echo
-echo  
+echo cleaning your phone
 adb.exe shell pm uninstall -k --user 0 com.zhihu.android
 adb.exe shell pm uninstall -k --user 0 com.xiaomi.jr 
 adb.exe shell pm uninstall -k --user 0 com.ss.android.article.news
@@ -103,23 +78,9 @@ echo downloading gboard
 powershell -Command "Invoke-WebRequest https://download1583.mediafire.com/theszju94f8g/vd16wqk7xddw3p2/Gboard+the+Google+Keyboard_v10.3.05.356487417-release-arm64-v8a_apkpure.com.apk  -Outfile gb.apk"
 adb install gb.apk
 CLS
-echo ###############################################################
-echo #                 .-'''-.                                     #          
-echo #_______         '   _    \                                   #        
-echo #\  ___ `'.    /   /` '.   \    _..._         __.....__       #        
-echo # ' |--.\  \  .   |     \  '  .'     '.   .-''         '.     #        
-echo # | |    \  ' |   '      |  '.   .-.   . /     .-''"'-.  `.   #        
-echo # | |     |  '\    \     / / |  '   '  |/     /________\   \  #        
-echo # | |     |  | `.   ` ..' /  |  |   |  ||                  |  #        
-echo # | |     ' .'    '-...-'`   |  |   |  |\    .-------------'  #        
-echo # | |___.' /'                |  |   |  | \    '-.____...---.  #        
-echo #/_______.'/                 |  |   |  |  `.             .'   #        
-echo #\_______|/                  |  |   |  |    `''-...... -'     #        
-echo #                            |  |   |  |                      #        
-echo #                            '--'   '--'                      #        
-echo ###############################################################   
-GOTO End
+echo DONE
+pause
+goto begin
 
-
-
-End 
+:exit
+@exit
