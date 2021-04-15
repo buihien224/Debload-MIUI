@@ -2,7 +2,7 @@
 CLS
 cd %cd%/adb
 echo wait-for-device.....
-adb.exe wait-for-device >NUL 2>NUL
+adb.exe wait-for-device
 adb.exe devices -l 
 echo 1.Install 
 echo 2.Clean
@@ -12,18 +12,20 @@ IF ERRORLEVEL 2 GOTO Clean
 IF ERRORLEVEL 1 GOTO Install
 :: Install rom 
 :Install
+CLS
 echo Auto enter to recovery
 adb.exe reboot recovery
+echo rebooting .......
 adb.exe wait-for-recovery
 CLS
 echo ##################################
-echo #		Now in recovery mode      #
+echo #      Now in recovery mode      #
 echo #   Go to MENU (3 lines option)  #
-echo #     Go To ADB & Sideload       #
+echo #     Go To ADB , Sideload       #
 echo #    Swipe to Start Sideload     #
 echo ##################################
+adb.exe wait-for-sideload
 set /p UserInputPath=Drag your Zip file ROM, Magisk To CMD : 
-adb.exe sideload %UserInputPath%
 echo ##################################################################
 echo #		______ _       ___   _____ _   _ _____ _   _ _____        #
 echo #		|  ___| |     / _ \ /  ___| | | |_   _| \ | |  __ \		  #
@@ -33,6 +35,7 @@ echo #		| |   | |____| | | |/\__/ / | | |_| |_| |\  | |_\ \       #
 echo #		\_|   \_____/\_| |_/\____/\_| |_/\___/\_| \_/\____/       #
 echo # 																  #
 echo ##################################################################                                                                                                  
+adb.exe sideload %UserInputPath%
 adb.exe wait-for-recovery 
 CLS
 echo ###############################################################
@@ -53,9 +56,16 @@ echo ###############################################################
 adb.exe reboot
 GOTO End
 :Clean
-echo  This script help you clean so many fucking miui trash app
-echo  feel free to contact me via telegram 035939562
-echo  Clean your phone  
+CLS
+echo  ________  ___       _______   ________  ________      
+echo |\   ____\|\  \     |\  ___ \ |\   __  \|\   ___  \    
+echo \ \  \___|\ \  \    \ \   __/|\ \  \|\  \ \  \\ \  \   
+echo  \ \  \    \ \  \    \ \  \_|/_\ \   __  \ \  \\ \  \  
+echo   \ \  \____\ \  \____\ \  \_|\ \ \  \ \  \ \  \\ \  \ 
+echo    \ \_______\ \_______\ \_______\ \__\ \__\ \__\\ \__\
+echo     \|_______|\|_______|\|_______|\|__|\|__|\|__| \|__|
+echo
+echo  
 adb.exe shell pm uninstall -k --user 0 com.zhihu.android
 adb.exe shell pm uninstall -k --user 0 com.xiaomi.jr 
 adb.exe shell pm uninstall -k --user 0 com.ss.android.article.news
@@ -88,9 +98,22 @@ adb.exe shell pm uninstall -k --user 0 com.unionpay.tsmservice.mi
 echo downloading gboard
 powershell -Command "Invoke-WebRequest https://download1583.mediafire.com/theszju94f8g/vd16wqk7xddw3p2/Gboard+the+Google+Keyboard_v10.3.05.356487417-release-arm64-v8a_apkpure.com.apk  -Outfile gb.apk"
 adb install gb.apk
-echo  pls allow to install in your phone
-echo Fuck xiaomi's trash app 
-echo If you want add more app to delete
+CLS
+echo ###############################################################
+echo #                 .-'''-.                                     #          
+echo #_______         '   _    \                                   #        
+echo #\  ___ `'.    /   /` '.   \    _..._         __.....__       #        
+echo # ' |--.\  \  .   |     \  '  .'     '.   .-''         '.     #        
+echo # | |    \  ' |   '      |  '.   .-.   . /     .-''"'-.  `.   #        
+echo # | |     |  '\    \     / / |  '   '  |/     /________\   \  #        
+echo # | |     |  | `.   ` ..' /  |  |   |  ||                  |  #        
+echo # | |     ' .'    '-...-'`   |  |   |  |\    .-------------'  #        
+echo # | |___.' /'                |  |   |  | \    '-.____...---.  #        
+echo #/_______.'/                 |  |   |  |  `.             .'   #        
+echo #\_______|/                  |  |   |  |    `''-...... -'     #        
+echo #                            |  |   |  |                      #        
+echo #                            '--'   '--'                      #        
+echo ###############################################################   
 GOTO End
-
+pause
 End 
