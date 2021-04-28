@@ -7,7 +7,7 @@ adb.exe devices -l
 echo 1.Install 
 echo 2.Clean
 echo 3.GBoard
-CHOICE /C 12 /M "Enter your choice:"
+CHOICE /C 123 /M "Enter your choice:"
 :: Note - list ERRORLEVELS in decreasing order
 IF ERRORLEVEL 3 GOTO GBoard
 IF ERRORLEVEL 2 GOTO Clean
@@ -97,9 +97,8 @@ pause
 GOTO End
 
 :GBoard
-echo downloading gboard
-powershell -Command "Invoke-WebRequest https://download1583.mediafire.com/theszju94f8g/vd16wqk7xddw3p2/Gboard+the+Google+Keyboard_v10.3.05.356487417-release-arm64-v8a_apkpure.com.apk  -Outfile gb.apk"
-adb install gb.apk
+echo install GBoard
+adb.exe install gb.apk
 GOTO End
 
 
