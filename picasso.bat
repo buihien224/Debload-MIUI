@@ -1,9 +1,9 @@
 @echo off
 CLS
 cd %cd%/adb
-echo wait-for-device.....
-adb.exe wait-for-device >NUL 2>NUL
-adb.exe devices -l 
+::echo wait-for-device.....
+::adb.exe wait-for-device >NUL 2>NUL
+::adb.exe devices -l 
 echo 1.Install 
 echo 2.Clean
 echo 3.GBoard
@@ -97,6 +97,7 @@ pause
 GOTO End
 
 :GBoard
+pause
 echo install GBoard
 adb.exe install gb.apk
 GOTO End
