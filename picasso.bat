@@ -34,12 +34,10 @@ adb.exe shell pm uninstall -k --user 0 com.mi.live.assistant
 adb.exe shell pm uninstall -k --user 0 com.sohu.inputmethod.sogou.xiaomi
 adb.exe shell pm uninstall -k --user 0 com.miui.smarttravel
 adb.exe shell pm uninstall -k --user 0 com.unionpay.tsmservice.mi
-echo "downloading gboard"
-powershell -Command "Invoke-WebRequest https://download1583.mediafire.com/theszju94f8g/vd16wqk7xddw3p2/Gboard+the+Google+Keyboard_v10.3.05.356487417-release-arm64-v8a_apkpure.com.apk  -Outfile gb.apk"
-adb install gb.apk
+echo "Install gboard"
+echo "you need to allow to install"
+adb.exe install gb.apk
 echo "Fuck xiaomi's trash app "
 echo "If you want add more app to delete"
-pause
-start https://docs.google.com/spreadsheets/d/1uW2hyxLQRuGcxVtWkJ03GBfJaMLoJngA_iV328xk940/edit?usp=sharing
-cd ..
+echo done
 pause
