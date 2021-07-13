@@ -32,11 +32,8 @@ adb.exe shell pm uninstall -k --user 0 com.miui.newhome
 adb.exe shell pm uninstall -k --user 0 com.xiaomi.payment
 adb.exe shell pm uninstall -k --user 0 com.miui.newmidrive
 adb.exe shell pm uninstall -k --user 0 com.mi.live.assistant
-adb.exe shell pm uninstall -k --user 0 com.sohu.inputmethod.sogou.xiaomi
 adb.exe shell pm uninstall -k --user 0 com.miui.smarttravel
 adb.exe shell pm uninstall -k --user 0 com.unionpay.tsmservice.mi
-echo "Install Play Store"
-adb.exe install gg.apk
 echo "Install gboard"
 echo "you need to allow to install"
 adb.exe install gb.apk
