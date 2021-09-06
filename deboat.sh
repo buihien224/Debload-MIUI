@@ -1,4 +1,5 @@
 @echo off
+su
 echo " This script help you clean so many fucking miui trash app"
 echo " feel free to contact me via telegram 035939562"
 echo " Clean your phone " 
