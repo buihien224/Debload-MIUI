@@ -4,8 +4,7 @@ scpt="tmp/META-INF/com/google/android/updater-script"
 
 #####
 cd ~/
-mkdir BHLNK
-rd=$($RANDOM)
+rd=$RANDOM
 pwd=$(pwd)
 echo -e "\e[1;31mGenerate GSI Flashing Template @bhlnk \e[0m"
 sleep 0.5
