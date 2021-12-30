@@ -44,7 +44,7 @@ jobs:
        - name: Upload 
          uses: Difegue/action-megacmd@1.2.0
          with:
-          args: put $(ls | grep "deloat") /
+          args: put $(ls | grep "debloat") /
          env:
           USERNAME: ${{ github.event.inputs.email }} 
           PASSWORD: ${{ github.event.inputs.pwd }} 
