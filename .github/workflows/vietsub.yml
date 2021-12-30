@@ -1,0 +1,51 @@
+# This is a basic workflow to help you get started with Actions 0389905577
+
+name: vietsub_build
+
+on:
+  workflow_dispatch:
+    inputs:
+     ROM_URL:
+      description: 'OTA Url'
+      required: true
+      default: 'Paste Link ROM here'
+     isflagship:
+     email:
+      description: 'MEGA email'
+      required: true
+      default: 'your@gmail.com'
+     pwd:
+      description: 'MEGA password'
+      required: true
+  
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+       - name: Checkout
+         uses: actions/checkout@v2
+       
+       - name: Setting up
+         run: |
+            sudo apt-get install -y git wget zip unzip img2simg simg2img brotli axel
+            
+       - name: Download ROM
+         run: |
+            cd $GITHUB_WORKSPACE
+            axel -n $(nproc) ${{ github.event.inputs.ROM_URL }} 
+           
+       - name: Debloating .... 
+         run: |
+            cd $GITHUB_WORKSPACE
+            sudo chmod 777 -R *
+            ./bhlnk.sh
+            
+       - name: Upload 
+         uses: Difegue/action-megacmd@1.2.0
+         with:
+          args: put $(ls | grep "vietsub") /
+         env:
+          USERNAME: ${{ github.event.inputs.email }} 
+          PASSWORD: ${{ github.event.inputs.pwd }} 

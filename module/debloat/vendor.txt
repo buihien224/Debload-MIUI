@@ -1,0 +1,5 @@
+data-app/BaiduIME
+data-app/com.iflytek.inputmethod.miui
+data-app/SmartHome
+data-app/wps-lite
+data-app/XMRemoteController
