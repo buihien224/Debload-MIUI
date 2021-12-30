@@ -248,7 +248,7 @@ elif [[ config -eq 1 ]]; then
 	if [ -d $bro/META-INF ]; then
 		echo "- Zipping"
 		cp "$dir/bin/vbmeta.img" $bro
-		7za a -tzip "$dir/vietsub_$zipname" $bro/*  
+		7za a -tzip "$dir/debloat_$zipname" $bro/*  
 	fi
 	if [ -f "$dir/debloat_$zipname" ]; then
       echo "- Repack done"
