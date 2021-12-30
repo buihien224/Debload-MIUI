@@ -9,7 +9,6 @@ on:
       description: 'OTA Url'
       required: true
       default: 'Paste Link ROM here'
-     isflagship:
      email:
       description: 'MEGA email'
       required: true
